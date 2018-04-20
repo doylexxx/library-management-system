@@ -46,7 +46,7 @@ namespace LibraryManagementSystem
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            ldb.AddCard(this.textID.Text.Trim().ToString(), this.textName.Text.Trim().ToString(), this.textDepart.Text.Trim().ToString(), this.cbType.Text.Trim().ToString());
+            ldb.AddCard(textID.Text, textName.Text, textDepart.Text, cbType.Text[0]);
             refreshlistview();
         }
 
@@ -60,8 +60,7 @@ namespace LibraryManagementSystem
         {
             int rowCount, columnCount, i, j;
 
-            LibraryDB lb = new LibraryDB("Library", "sa", "111");
-            DataSet ds = lb.SQL("select * from card");
+            DataSet ds = ldb.SQL("select * from card");
 
             rowCount = ds.Tables[0].Rows.Count;
             columnCount = ds.Tables[0].Columns.Count;
@@ -85,6 +84,11 @@ namespace LibraryManagementSystem
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbcardM_Click(object sender, EventArgs e)
         {
 
         }

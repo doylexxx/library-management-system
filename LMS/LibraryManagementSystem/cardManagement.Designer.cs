@@ -56,7 +56,7 @@
             this.lbcardMwd.Location = new System.Drawing.Point(0, 0);
             this.lbcardMwd.Name = "lbcardMwd";
             this.lbcardMwd.Size = new System.Drawing.Size(960, 55);
-            this.lbcardMwd.TabIndex = 0;
+            this.lbcardMwd.TabIndex = 6;
             // 
             // lbcardM
             // 
@@ -67,8 +67,9 @@
             this.lbcardM.Location = new System.Drawing.Point(65, 14);
             this.lbcardM.Name = "lbcardM";
             this.lbcardM.Size = new System.Drawing.Size(190, 27);
-            this.lbcardM.TabIndex = 1;
+            this.lbcardM.TabIndex = 7;
             this.lbcardM.Text = "Card Management";
+            this.lbcardM.Click += new System.EventHandler(this.lbcardM_Click);
             // 
             // buttonReturn
             // 
@@ -90,7 +91,7 @@
             this.lbcardID.Location = new System.Drawing.Point(520, 130);
             this.lbcardID.Name = "lbcardID";
             this.lbcardID.Size = new System.Drawing.Size(62, 20);
-            this.lbcardID.TabIndex = 3;
+            this.lbcardID.TabIndex = 9;
             this.lbcardID.Text = "Card ID";
             this.lbcardID.Click += new System.EventHandler(this.lbcardID_Click);
             // 
@@ -99,7 +100,7 @@
             this.textID.Location = new System.Drawing.Point(646, 128);
             this.textID.Name = "textID";
             this.textID.Size = new System.Drawing.Size(170, 25);
-            this.textID.TabIndex = 4;
+            this.textID.TabIndex = 0;
             // 
             // buttonAdd
             // 
@@ -113,7 +114,7 @@
             this.buttonAdd.Location = new System.Drawing.Point(646, 370);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(170, 45);
-            this.buttonAdd.TabIndex = 5;
+            this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "Add Card";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -130,7 +131,7 @@
             this.buttonDelete.Location = new System.Drawing.Point(646, 443);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(170, 45);
-            this.buttonDelete.TabIndex = 6;
+            this.buttonDelete.TabIndex = 5;
             this.buttonDelete.Text = "Delete Card";
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -145,7 +146,7 @@
             this.listCard.Location = new System.Drawing.Point(70, 128);
             this.listCard.Name = "listCard";
             this.listCard.Size = new System.Drawing.Size(410, 360);
-            this.listCard.TabIndex = 7;
+            this.listCard.TabIndex = 8;
             this.listCard.UseCompatibleStateImageBehavior = false;
             this.listCard.View = System.Windows.Forms.View.Details;
             this.listCard.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -175,14 +176,14 @@
             this.textName.Location = new System.Drawing.Point(646, 184);
             this.textName.Name = "textName";
             this.textName.Size = new System.Drawing.Size(170, 25);
-            this.textName.TabIndex = 8;
+            this.textName.TabIndex = 1;
             // 
             // textDepart
             // 
             this.textDepart.Location = new System.Drawing.Point(646, 237);
             this.textDepart.Name = "textDepart";
             this.textDepart.Size = new System.Drawing.Size(170, 25);
-            this.textDepart.TabIndex = 9;
+            this.textDepart.TabIndex = 2;
             // 
             // lbName
             // 
@@ -192,7 +193,7 @@
             this.lbName.Location = new System.Drawing.Point(520, 186);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(52, 20);
-            this.lbName.TabIndex = 11;
+            this.lbName.TabIndex = 10;
             this.lbName.Text = "Name";
             // 
             // lbdepat
@@ -203,7 +204,7 @@
             this.lbdepat.Location = new System.Drawing.Point(520, 239);
             this.lbdepat.Name = "lbdepat";
             this.lbdepat.Size = new System.Drawing.Size(97, 20);
-            this.lbdepat.TabIndex = 12;
+            this.lbdepat.TabIndex = 11;
             this.lbdepat.Text = "Department";
             // 
             // lbType
@@ -214,7 +215,7 @@
             this.lbType.Location = new System.Drawing.Point(520, 286);
             this.lbType.Name = "lbType";
             this.lbType.Size = new System.Drawing.Size(45, 20);
-            this.lbType.TabIndex = 13;
+            this.lbType.TabIndex = 12;
             this.lbType.Text = "Type";
             // 
             // cbType
@@ -224,14 +225,14 @@
             this.cbType.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.cbType.FormattingEnabled = true;
             this.cbType.Items.AddRange(new object[] {
-            "O",
-            "U",
-            "G",
-            "T"});
+            "Teacher",
+            "Graduate",
+            "Undergraduate",
+            "Officer"});
             this.cbType.Location = new System.Drawing.Point(646, 286);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(170, 28);
-            this.cbType.TabIndex = 14;
+            this.cbType.TabIndex = 3;
             this.cbType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // cardManagement
