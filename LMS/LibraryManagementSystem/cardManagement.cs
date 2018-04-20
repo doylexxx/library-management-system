@@ -52,8 +52,17 @@ namespace LibraryManagementSystem
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            ldb.DeleteCard(this.textID.Text.Trim().ToString());
-            refreshlistview();
+            if (listCard.SelectedItems.Count == 0) MessageBox.Show("Please select a card.");
+            else
+            {
+                string cno = listCard.SelectedItems[0].Text;
+                if (MessageBox.Show(string.Format("Delete {0} ?", cno),
+                    "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    ldb.DeleteCard(cno);
+                    refreshlistview();
+                }
+            }
         }
 
         private void refreshlistview()

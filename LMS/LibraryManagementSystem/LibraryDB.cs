@@ -111,7 +111,7 @@ public class LibraryDB
     /// <summary>
     /// 登录状态
     /// </summary>
-    public enum LoginStatus { Success, Wrong, NotExist };
+    public enum LoginStatus { Success, Wrong, NotExist, Error };
 
     /// <summary>
     /// 实现管理员登录功能。
@@ -121,17 +121,25 @@ public class LibraryDB
     /// <returns></returns>
     public LoginStatus Login(string id, string password)
     {
-        string query = string.Format(
-            "select password from admin where ano = '{0}'",id);
-        string pass = ExecScalarQuery(query) as string;
-
-        if (pass == null) return LoginStatus.NotExist;
-        else if (pass == password)
+        try
         {
-            admin = id;
-            return LoginStatus.Success;
+            string query = string.Format(
+                "select password from admin where ano = '{0}'", id);
+            string pass = ExecScalarQuery(query) as string;
+
+            if (pass == null) return LoginStatus.NotExist;
+            else if (pass == password)
+            {
+                admin = id;
+                return LoginStatus.Success;
+            }
+            else return LoginStatus.Wrong;
         }
-        else return LoginStatus.Wrong;
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return LoginStatus.Error;
+        }
     }
 
     /// <summary>
@@ -260,9 +268,12 @@ values('{0}', '{1}', getdate(), null, '{2}')"
 
             string cmd = string.Format(
                 "delete from card where cno = '{0}'", cno);
-            ExecNoneQuery(cmd);
+            if (ExecNoneQuery(cmd) == 0)
+            {
+                MessageBox.Show("No such card!");
+            }
         }
-        catch(Exception)
+        catch (Exception)
         {
             MessageBox.Show("Delete Failed! ");
         }
