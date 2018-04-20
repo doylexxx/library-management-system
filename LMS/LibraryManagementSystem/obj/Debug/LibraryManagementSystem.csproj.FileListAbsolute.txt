@@ -1,0 +1,15 @@
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.exe.config
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.exe
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\bin\Debug\LibraryManagementSystem.pdb
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csprojResolveAssemblyReference.cache
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Login.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.Properties.Resources.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.csproj.GenerateResource.Cache
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.exe
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.pdb
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.interfaceMain.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.bookStorage.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.bookSearch.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.bookBorrow.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.bookReturn.resources
+E:\2\数据库系统\experiments\2017年春学期数据库实验课\实验和作业要求\project\LMS\LMS\LibraryManagementSystem\obj\Debug\LibraryManagementSystem.cardManagement.resources
