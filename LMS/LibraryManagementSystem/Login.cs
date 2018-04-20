@@ -19,7 +19,7 @@ namespace LibraryManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LibraryDB lb = new LibraryDB("Library", "sa", "111");
+            LibraryDB lb = new LibraryDB("SQL Server", "sa", "sa");
             var state = lb.Login(boxID.Text,boxpassword.Text);
             switch (state)
             {
