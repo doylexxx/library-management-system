@@ -16,6 +16,7 @@ public class LibraryDB
 
     public const int MaxBorrow = 3;
     public const int BorrowDays = 60;
+    public const int TopN = 50;
 
     // Last Executed SQL command
     string lastexec = "";
@@ -58,6 +59,7 @@ public class LibraryDB
     /// <returns>SQL语句的执行结果</returns>
     public DataSet SQL(string query)
     {
+        lastexec = query;
         try
         {
             var adapter = new OdbcDataAdapter(query, conn);
@@ -75,7 +77,6 @@ public class LibraryDB
     /// <summary>
     /// 新建ODBC事件
     /// </summary>
-    /// <returns></returns>
     private OdbcTransaction BeginTransaction()
     {
         var trans = conn.BeginTransaction();
@@ -95,7 +96,8 @@ public class LibraryDB
     }
 
     /// <summary>
-    /// 执行返回单个值的SQL语句。如果返回null，表示无结果<para/>
+    /// 执行返回单个值的SQL语句。如果返回DBNull.Value，说明结果为（数据库）null。
+    /// 如果返回（C#）null，表示查询结果为空表<para/>
     /// 返回结果需要使用类型转换。如"ExecScalarQuery(command) as string"得到string结果。
     /// 转换失败亦会得到null。
     /// </summary>
@@ -177,6 +179,40 @@ values('{0}','{1}','{2}','{3}',{4},'{5}',{6},{7},{7})"
     }
 
     /// <summary>
+    /// 批量添加书籍（框架）
+    /// </summary>
+    /// <param name="filename">文件名</param>
+    /// <returns></returns>
+    public int AddBooks(string filename)
+    {
+        var trans = BeginTransaction();
+        try
+        {
+            int count = 0;
+
+            // TODO 批量添加
+
+            trans.Commit();
+            return count;
+        }
+        catch (Exception)
+        {
+            trans.Rollback();
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// 实现图书查询功能（框架）
+    /// </summary>
+    /// <returns></returns>
+    public DataSet BookSearch()
+    {
+        // TODO 查询
+        return new DataSet();
+    }
+
+    /// <summary>
     /// 显示该借书证所有已借书籍 (返回, 格式同查询模块)
     /// </summary>
     public DataSet ListBorrow(string cno)
@@ -186,10 +222,91 @@ select * from book
 where title in(
     select title
     from borrow join book on borrow.bno = book.bno
-    where borrow.cno = '{0}'
-    ) and return_date is null"
+    where borrow.cno = '{0}' and return_date is null)"
             , cno);
         return SQL(query);
+    }
+
+    /// <summary>
+    /// 查询借书证已借书籍数目，-1表示查询失败
+    /// </summary>
+    /// <param name="cno"></param>
+    /// <returns></returns>
+    public int CountBorrow(string cno)
+    {
+        try
+        {
+            string query = string.Format(
+                "select count(*) from borrow where cno = '{0}' and return_date is null", cno);
+            int? ret = ExecScalarQuery(query) as int?;
+            return ret ?? -1;
+        }
+        catch (Exception)
+        {
+            return -1;
+        }
+    }
+
+    /// <summary>
+    /// 查询库存。-1表示查询失败
+    /// </summary>
+    /// <param name="bno"></param>
+    /// <returns></returns>
+    public int BookStock(string bno)
+    {
+        try
+        {
+            string query = string.Format(
+                "select stock from book where bno = '{0}'", bno);
+            int? ret = ExecScalarQuery(query) as int?;
+            return ret ?? -1;
+        }
+        catch (Exception)
+        {
+            return -1;
+        }
+    }
+
+    /// <summary>
+    /// 一本书的的最早归还时间
+    /// </summary>
+    /// <param name="bno"></param>
+    /// <returns></returns>
+    public string EarliestReturn(string bno)
+    {
+        string query = string.Format(@"
+select min(earliest) from(
+    select dateadd(day,{0},borrow_date) as earliest from borrow
+    where bno = '{1}') as T
+--where earliest >= getdate()"
+            , BorrowDays, bno);
+        try
+        {
+            var ret = ExecScalarQuery(query);
+            if (ret == DBNull.Value) return null;
+            else return ret.ToString();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// 判断借书证是否结果某本书
+    /// </summary>
+    /// <param name="cno"></param>
+    /// <param name="bno"></param>
+    /// <returns></returns>
+    public bool Borrowed(string cno, string bno)
+    {
+        string check = string.Format(@"
+select bno from borrow
+where cno = '{0}' and bno = '{1}' and return_date is null"
+                , cno, bno);
+        var ret = ExecScalarQuery(check);
+        return ret != null;
     }
 
     /// <summary>

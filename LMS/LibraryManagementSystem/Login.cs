@@ -19,8 +19,13 @@ namespace LibraryManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            signin();
+        }
+
+        private void signin()
+        {
             LibraryDB lb = new LibraryDB("SQL Server", "sa", "sa");
-            var state = lb.Login(boxID.Text,boxpassword.Text);
+            var state = lb.Login(boxID.Text, boxpassword.Text);
             switch (state)
             {
                 case LibraryDB.LoginStatus.Wrong:
@@ -55,6 +60,14 @@ namespace LibraryManagementSystem
         private void linkforget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                signin();
+            }
         }
     }
 }

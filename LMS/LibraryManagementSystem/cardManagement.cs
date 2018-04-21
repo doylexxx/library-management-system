@@ -13,7 +13,7 @@ namespace LibraryManagementSystem
 {
     public partial class cardManagement : Form
     {
-        public LibraryDB ldb;
+        LibraryDB ldb;
 
         public cardManagement( LibraryDB lb )
         {
@@ -56,12 +56,26 @@ namespace LibraryManagementSystem
             else
             {
                 string cno = listCard.SelectedItems[0].Text;
+<<<<<<< HEAD
+                if (ldb.CountBorrow(cno) == 0)
+                {    
+                    if (MessageBox.Show(string.Format("Delete {0} ?", cno.Trim()),
+                        "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        ldb.DeleteCard(cno);
+                        refreshlistview();
+                    }
+                }
+                else
+                    MessageBox.Show("Can't delete this card. Please return all the book! ");
+=======
                 if (MessageBox.Show(string.Format("Delete {0} ?", cno),
                     "Delete", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     ldb.DeleteCard(cno);
                     refreshlistview();
                 }
+>>>>>>> de5316a509d8dba55bc3942388642dc29e28051f
             }
         }
 
